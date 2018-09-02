@@ -1,9 +1,7 @@
-package com.zone24x7.bi.sampleapp.startup;
+package com.logtracker.sampleapp.startup;
 
 import com.google.inject.Inject;
-import org.slf4j.MDC;
 import play.inject.ApplicationLifecycle;
-import ch.qos.logback.core.ConsoleAppender;
 
 import java.util.concurrent.CompletableFuture;
 

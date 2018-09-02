@@ -1,8 +1,8 @@
-package com.zone24x7.bi.sampleapp.controllers;
+package com.logtracker.sampleapp.controllers;
 
-import com.zone24x7.bi.logtracker.LogTrackerLogger;
-import com.zone24x7.bi.logtracker.actions.LogTrackerAction;
-import com.zone24x7.bi.logtracker.annotations.LogTracker;
+import com.logtracker.LogTrackerLogger;
+import com.logtracker.actions.LogTrackerAction;
+import com.logtracker.annotations.LogTracker;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.With;

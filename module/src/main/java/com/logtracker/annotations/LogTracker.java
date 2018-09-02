@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker.annotations;
+package com.logtracker.annotations;
 
 import com.google.inject.BindingAnnotation;
 

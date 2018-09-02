@@ -22,17 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker;
+package com.logtracker;
 
-import ch.qos.logback.classic.PatternLayout;
 import com.typesafe.config.Config;
-import com.zone24x7.bi.logtracker.error.LogTrackerException;
-import com.zone24x7.bi.logtracker.utils.LogTrackerUtil;
+import com.logtracker.error.LogTrackerException;
+import com.logtracker.utils.LogTrackerUtil;
 import com.zone24x7.bi.pattern.CustomClassOfCallerConverter;
 import org.slf4j.MDC;
 import play.Logger;
-
-import java.util.Map;
 
 /**
  * Implementation of LogTrackerLogger to include log tracker id

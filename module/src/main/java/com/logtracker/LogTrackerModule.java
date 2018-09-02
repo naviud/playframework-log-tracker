@@ -22,12 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker;
+package com.logtracker;
 
-import ch.qos.logback.classic.PatternLayout;
-import ch.qos.logback.classic.pattern.MDCConverter;
 import com.zone24x7.bi.pattern.CustomClassOfCallerConverter;
-import org.slf4j.MDC;
 import play.api.Configuration;
 import play.api.Environment;
 import play.api.inject.Binding;

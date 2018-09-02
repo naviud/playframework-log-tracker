@@ -1,8 +1,8 @@
-package com.zone24x7.bi.sampleapp.startup;
+package com.logtracker.sampleapp.startup;
 
-import com.zone24x7.bi.logtracker.LogTrackerModule;
-import com.zone24x7.bi.sampleapp.guice.modules.ControllerModule;
-import com.zone24x7.bi.sampleapp.guice.modules.LoggerModule;
+import com.logtracker.LogTrackerModule;
+import com.logtracker.sampleapp.guice.modules.ControllerModule;
+import com.logtracker.sampleapp.guice.modules.LoggerModule;
 import play.ApplicationLoader;
 import play.inject.guice.GuiceApplicationBuilder;
 import play.inject.guice.GuiceApplicationLoader;

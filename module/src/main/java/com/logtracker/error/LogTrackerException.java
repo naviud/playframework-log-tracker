@@ -22,48 +22,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker.concurrent;
+package com.logtracker.error;
 
-import com.zone24x7.bi.logtracker.error.LogTrackerException;
-import com.zone24x7.bi.logtracker.utils.LogTrackerUtil;
-import play.Logger;
-import play.mvc.Http;
-
-public abstract class LogTrackerRunnable implements Runnable {
-
-    protected final Http.Context context;
-
+/**
+ * Exception to be thrown for log tracker related exceptions.
+ *
+ */
+public class LogTrackerException extends Exception {
     /**
-     * Default constructor
+     * Default constructor to instantiate LogTrackerException.
      *
      */
-    public LogTrackerRunnable() {
-        this.context = Http.Context.current();
+    public LogTrackerException() {
+        super();
     }
 
     /**
-     * Overridden call method of the runnable interface
+     * Constructor to instantiate LogTrackerException with the message.
      *
-     * @throws Exception
+     * @param message Exception message
      */
-    @Override
-    public void run() {
-        try {
-            LogTrackerUtil.setContext(context);
-            doRun();
-        } catch (LogTrackerException e) {
-            Logger.warn("Context transfer failed", e);
-        } catch (Exception e) {
-            Logger.warn("Runnable exception occurred", e);
-        } finally {
-            LogTrackerUtil.clearContext();
-        }
+    public LogTrackerException(String message) {
+        super(message);
     }
 
     /**
-     * Method to be overridden to include task related logic
-     *
-     * @throws Exception
+     * Constructor to instantiate LogTrackerException with the message and the cause.
+     * @param message Exception message
+     * @param cause Cause for the exception
      */
-    protected abstract void doRun() throws Exception;
+    public LogTrackerException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

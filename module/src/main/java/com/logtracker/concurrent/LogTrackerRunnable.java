@@ -22,30 +22,48 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker.actions;
+package com.logtracker.concurrent;
 
+import com.logtracker.error.LogTrackerException;
+import com.logtracker.utils.LogTrackerUtil;
+import play.Logger;
 import play.mvc.Http;
-import play.mvc.Result;
 
-import java.util.concurrent.CompletionStage;
+public abstract class LogTrackerRunnable implements Runnable {
 
-import static java.util.UUID.randomUUID;
-
-/**
- * Play action to enable log tracker
- *
- */
-public class LogTrackerAction extends play.mvc.Action.Simple {
+    protected final Http.Context context;
 
     /**
-     * Overridden call method to integrate tracker id to the context
+     * Default constructor
      *
-     * @param ctx Context
-     * @return
+     */
+    public LogTrackerRunnable() {
+        this.context = Http.Context.current();
+    }
+
+    /**
+     * Overridden call method of the runnable interface
+     *
+     * @throws Exception
      */
     @Override
-    public CompletionStage<Result> call(Http.Context ctx) {
-        Http.Context.current().args.put("TrackerId", randomUUID().toString());
-        return delegate.call(ctx);
+    public void run() {
+        try {
+            LogTrackerUtil.setContext(context);
+            doRun();
+        } catch (LogTrackerException e) {
+            Logger.warn("Context transfer failed", e);
+        } catch (Exception e) {
+            Logger.warn("Runnable exception occurred", e);
+        } finally {
+            LogTrackerUtil.clearContext();
+        }
     }
+
+    /**
+     * Method to be overridden to include task related logic
+     *
+     * @throws Exception
+     */
+    protected abstract void doRun() throws Exception;
 }

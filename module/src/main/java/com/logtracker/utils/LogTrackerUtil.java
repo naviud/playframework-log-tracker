@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker.utils;
+package com.logtracker.utils;
 
-import com.zone24x7.bi.logtracker.error.LogTrackerException;
+import com.logtracker.error.LogTrackerException;
 import play.mvc.Http;
 
 /**

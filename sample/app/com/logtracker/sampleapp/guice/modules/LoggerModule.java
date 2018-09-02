@@ -1,11 +1,9 @@
-package com.zone24x7.bi.sampleapp.guice.modules;
+package com.logtracker.sampleapp.guice.modules;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.zone24x7.bi.logtracker.annotations.LogTracker;
-import com.zone24x7.bi.logtracker.LogTrackerLogger;
-import com.zone24x7.bi.sampleapp.controllers.TestController;
-import com.zone24x7.bi.sampleapp.startup.LogTrackerHttpErrorHandler;
+import com.logtracker.annotations.LogTracker;
+import com.logtracker.LogTrackerLogger;
 
 public class LoggerModule extends AbstractModule {
 

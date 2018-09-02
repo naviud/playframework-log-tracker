@@ -1,6 +1,6 @@
-package com.zone24x7.bi.sampleapp.startup;
+package com.logtracker.sampleapp.startup;
 
-import com.zone24x7.bi.logtracker.LogTrackerLogger;
+import com.logtracker.LogTrackerLogger;
 import play.http.HttpErrorHandler;
 import play.mvc.Http;
 import play.mvc.Result;

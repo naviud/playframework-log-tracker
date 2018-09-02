@@ -1,8 +1,8 @@
-package com.zone24x7.bi.sampleapp.filters;
+package com.logtracker.sampleapp.filters;
 
 import akka.util.ByteString;
-import com.zone24x7.bi.logtracker.error.LogTrackerException;
-import com.zone24x7.bi.logtracker.utils.LogTrackerUtil;
+import com.logtracker.error.LogTrackerException;
+import com.logtracker.utils.LogTrackerUtil;
 import play.Logger;
 import play.libs.streams.Accumulator;
 import play.mvc.EssentialAction;

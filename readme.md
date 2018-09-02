@@ -16,58 +16,58 @@ When analyzing application and access logs in your application, there can be a n
 This LogTracker logger module will help to resolve such problem which can happen in your Play project.
 
 ```
-[trace] 2018-08-28 14:42:51.584 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:42:51.584 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : V2 endpoint -> ATG Id : 2254029711161505 | VIS Id : null  | MCM Id : null  | KNOWN ALG Id : null | UNKNOWN ALG Id : null | CCP : null | CALLER : null
 
-[info] 2018-08-28 14:42:51.629 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:42:51.629 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Attempting to establish the connection...
 
-[trace] 2018-08-28 14:42:51.644 +0530 - [pool-16-thread-1] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:42:51.644 +0530 - [pool-16-thread-1] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : BigTable cache level call initiating.. Table : rec_switch_table | Key : recommendations_propensity | Family : tables | Qualifier : active
 
-[info] 2018-08-28 14:42:56.137 +0530 - [pool-17-thread-1] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.getMessage 
+[info] 2018-08-28 14:42:56.137 +0530 - [pool-17-thread-1] - from com.logtracker.LogTrackerLoggerImpl.getMessage 
 Log tracker id is not available at this moment
 
-[info] 2018-08-28 14:43:00.315 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:00.315 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Time spent(in ms) to fetch record from BigTable Table : rec_switch_table | Key : recommendations_propensity -> 8684.068870
 
-[trace] 2018-08-28 14:43:00.321 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:43:00.321 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Persistent cache level call initiating.. Table : recommendations_propensity | Key : 2254029711161505##recommendations_propensity##rec##176 | Id : 2254029711161505 | Family : rec | Qualifier : 176
 
-[info] 2018-08-28 14:43:00.321 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:00.321 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Attempting to establish the connection...
 
-[trace] 2018-08-28 14:43:00.322 +0530 - [pool-16-thread-1] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:43:00.322 +0530 - [pool-16-thread-1] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : BigTable cache level call initiating.. Table : recommendations_propensity | Key : 2254029711161505 | Family : rec | Qualifier : 176
 
-[info] 2018-08-28 14:43:09.729 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:09.729 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Time spent(in ms) to fetch record from BigTable Table : recommendations_propensity | Key : 2254029711161505 | Family : rec | Qualifier : 176 -> 9407.930667
 
-[info] 2018-08-28 14:43:09.731 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:09.731 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : An empty/null value was received from BigTable and not set to cache. Data Category : recommendations_propensity | Id : 2254029711161505##recommendations_propensity##rec##176
 
-[trace] 2018-08-28 14:43:09.732 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:43:09.732 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Persistent cache level call initiating.. Table : recommendations_propensity | Key : 2254029711161505##recommendations_propensity##rec##176 | Id : 2254029711161505 | Family : rec | Qualifier : 176
 
-[info] 2018-08-28 14:43:09.733 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:09.733 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Attempting to establish the connection...
 
-[trace] 2018-08-28 14:43:09.733 +0530 - [pool-16-thread-1] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:43:09.733 +0530 - [pool-16-thread-1] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : BigTable cache level call initiating.. Table : recommendations_propensity | Key : 2254029711161505 | Family : rec | Qualifier : 176
 
-[info] 2018-08-28 14:43:18.737 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:18.737 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Time spent(in ms) to fetch record from BigTable Table : recommendations_propensity | Key : 2254029711161505 | Family : rec | Qualifier : 176 -> 9004.960491
 
-[info] 2018-08-28 14:43:18.738 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:18.738 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : An empty/null value was received from BigTable and not set to cache. Data Category : recommendations_propensity | Id : 2254029711161505##recommendations_propensity##rec##176
 
-[trace] 2018-08-28 14:43:18.739 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.debug 
+[trace] 2018-08-28 14:43:18.739 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.debug 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : No propensities for ATG Id : 2254029711161505
 
-[info] 2018-08-28 14:43:18.778 +0530 - [application-akka.actor.default-dispatcher-4] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.info 
+[info] 2018-08-28 14:43:18.778 +0530 - [application-akka.actor.default-dispatcher-4] - from com.logtracker.LogTrackerLoggerImpl.info 
 8d84803a-da8e-4f51-b96e-57c9fc36f480 : Time spent(in ms) to serve customer propensity for ATG Id : 2254029711161505 | VIS Id : null | MCM Id : null | Used Customer Id : null | Known Algorithm Id : null | Anonymous Algorithm Id : null | Used Algorithm Id : null | CCP : <NO_CCP> | Caller : null | Response cycle : 000148157001002003006009013017018021024028125 -> 27191.436406 with the size(in KB) -> 0.069336
 
-[info] 2018-08-28 14:43:26.136 +0530 - [pool-17-thread-1] - from com.zone24x7.bi.logtracker.LogTrackerLoggerImpl.getMessage 
+[info] 2018-08-28 14:43:26.136 +0530 - [pool-17-thread-1] - from com.logtracker.LogTrackerLoggerImpl.getMessage 
 Log tracker id is not available at this moment
 ```
 
@@ -89,7 +89,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 To register the module, add following line to the `application.conf` file.
 
 ```Java
-play.modules.enabled += "com.zone24x7.bi.logtracker.LogTrackerModule"
+play.modules.enabled += "com.logtracker.LogTrackerModule"
 ```
 
 ####Step 3 : Add a logger provider

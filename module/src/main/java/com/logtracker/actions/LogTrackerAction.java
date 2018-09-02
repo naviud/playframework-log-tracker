@@ -22,36 +22,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package com.zone24x7.bi.logtracker.error;
+package com.logtracker.actions;
+
+import play.mvc.Http;
+import play.mvc.Result;
+
+import java.util.concurrent.CompletionStage;
+
+import static java.util.UUID.randomUUID;
 
 /**
- * Exception to be thrown for log tracker related exceptions.
+ * Play action to enable log tracker
  *
  */
-public class LogTrackerException extends Exception {
-    /**
-     * Default constructor to instantiate LogTrackerException.
-     *
-     */
-    public LogTrackerException() {
-        super();
-    }
+public class LogTrackerAction extends play.mvc.Action.Simple {
 
     /**
-     * Constructor to instantiate LogTrackerException with the message.
+     * Overridden call method to integrate tracker id to the context
      *
-     * @param message Exception message
+     * @param ctx Context
+     * @return
      */
-    public LogTrackerException(String message) {
-        super(message);
-    }
-
-    /**
-     * Constructor to instantiate LogTrackerException with the message and the cause.
-     * @param message Exception message
-     * @param cause Cause for the exception
-     */
-    public LogTrackerException(String message, Throwable cause) {
-        super(message, cause);
+    @Override
+    public CompletionStage<Result> call(Http.Context ctx) {
+        Http.Context.current().args.put("TrackerId", randomUUID().toString());
+        return delegate.call(ctx);
     }
 }
