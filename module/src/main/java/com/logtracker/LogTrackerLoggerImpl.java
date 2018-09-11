@@ -24,12 +24,13 @@ SOFTWARE.
 
 package com.logtracker;
 
-import com.typesafe.config.Config;
 import com.logtracker.error.LogTrackerException;
 import com.logtracker.utils.LogTrackerUtil;
-import com.zone24x7.bi.pattern.CustomClassOfCallerConverter;
+import com.typesafe.config.Config;
 import org.slf4j.MDC;
 import play.Logger;
+
+import javax.inject.Inject;
 
 /**
  * Implementation of LogTrackerLogger to include log tracker id
@@ -47,7 +48,9 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
      * Default constructor
      *
      */
-    public LogTrackerLoggerImpl() {
+    @Inject
+    public LogTrackerLoggerImpl(Config config) {
+        this.config = config;
         new Logger.ALogger(play.api.Logger.apply("application"));
     }
 
@@ -216,21 +219,5 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
             msg = message;
         }
         return msg;
-    }
-
-    /**
-     * Private method to insert logger patterns
-     *
-     */
-    private void insertLoggerPatterns() {
-        MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
-        MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
-    }
-
-    /**
-     * Private method to clear logger patterns
-     */
-    private void cleanLoggerPatterns() {
-        MDC.clear();
     }
 }

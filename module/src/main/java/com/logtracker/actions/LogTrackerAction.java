@@ -24,9 +24,12 @@ SOFTWARE.
 
 package com.logtracker.actions;
 
+import com.typesafe.config.Config;
+import org.apache.commons.lang3.StringUtils;
 import play.mvc.Http;
 import play.mvc.Result;
 
+import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 
 import static java.util.UUID.randomUUID;
@@ -37,6 +40,16 @@ import static java.util.UUID.randomUUID;
  */
 public class LogTrackerAction extends play.mvc.Action.Simple {
 
+    private Config config;
+
+    private static final String LOGTRACKER_TRACKER_PROVIDER_HEADER = "logtracker.tracker.header";
+
+
+    @Inject
+    public LogTrackerAction(Config config) {
+        this.config = config;
+    }
+
     /**
      * Overridden call method to integrate tracker id to the context
      *
@@ -45,7 +58,14 @@ public class LogTrackerAction extends play.mvc.Action.Simple {
      */
     @Override
     public CompletionStage<Result> call(Http.Context ctx) {
-        Http.Context.current().args.put("TrackerId", randomUUID().toString());
+        String trackerId;
+        if (config.hasPath(LOGTRACKER_TRACKER_PROVIDER_HEADER)) {
+            String header =  config.getString(LOGTRACKER_TRACKER_PROVIDER_HEADER);
+            trackerId = ctx.request().getHeaders().get(header).filter(StringUtils::isNotEmpty).orElse(randomUUID().toString());
+        } else {
+            trackerId = randomUUID().toString();
+        }
+        Http.Context.current().args.put("TrackerId", trackerId);
         return delegate.call(ctx);
     }
 }

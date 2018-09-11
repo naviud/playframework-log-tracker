@@ -24,7 +24,6 @@ SOFTWARE.
 
 package com.logtracker;
 
-import com.zone24x7.bi.pattern.CustomClassOfCallerConverter;
 import play.api.Configuration;
 import play.api.Environment;
 import play.api.inject.Binding;

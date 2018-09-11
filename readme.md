@@ -4,13 +4,15 @@ LogTracker is a logger module done for Play framework which prepends a unique UU
 
 Table of Content
 ----------------
-* [Introduction]()
-* [Configure]()
-* [How to use]()
-* [How to contribute]()
+* [Introduction](#intro)
+* [Configure](#config)
+* [How to use](#use)
+* [How to contribute](#contribute)
 
-Introduction
-------------
+<a name="intro"/>
+
+## Introduction
+
 When analyzing application and access logs in your application, there can be a need to see the log message flow. Since all the logs are appended together, thus it would be difficult select logs which are part of a particular request.  
 
 This LogTracker logger module will help to resolve such problem which can happen in your Play project.
@@ -71,12 +73,14 @@ Log tracker id is not available at this moment
 Log tracker id is not available at this moment
 ```
 
+<a name="config"/>
+
 Configure
 ----------
 
 There are very easy steps to incorporate this logger to your project.
 
-####Step 1 : Import the library dependency to your project
+#### Step 1 : Import the library dependency to your project
 
 Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the the module to your project.
 
@@ -84,7 +88,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 "com.zone24x7.bi" % "log-tracker" % "0.0.2-SNAPSHOT"
 ```
 
-####Step 2 : Register the  module
+#### Step 2 : Register the  module
 
 To register the module, add following line to the `application.conf` file.
 
@@ -92,7 +96,7 @@ To register the module, add following line to the `application.conf` file.
 play.modules.enabled += "com.logtracker.LogTrackerModule"
 ```
 
-####Step 3 : Add a logger provider
+#### Step 3 : Add a logger provider
 
 This helps to inject the `LogTrackerLogger` instances wherever you want. To create the injector, use `@Provides` annotation in Guice.
 
@@ -107,7 +111,7 @@ This log provider needs to include to a class which extends a Play `AbstractModu
 
 `@LogTracker` annotation comes with this Play module itself and, this needs to use in every where you use the `LogTrackerLogger`.
 
-####Step 4 : Use the logger injector
+#### Step 4 : Use the logger injector
 
 In order to use the `LogTrackerLogger`, add the `@LogTracker` annotation  to the member variable of type `LogTrackerLogger` in your classes.
 
@@ -129,7 +133,19 @@ public class TestController extends Controller {
 
 To initiate to track your logs, it's necessary to decorate your controller methods with `LogTrackerAction` Play action. This initiates the random log tracker id(UUID) and propagates throughout HTTP context.  
 
-####Step 5 : Extend the LogTrackerCallable
+**Note :**
+If you want to use a tracker id which passed to your microservice as a HTTP header, you can just use it in your log messages. For that, what you need to do is just specify the header name which contains the tracker id to the `logtracker.tracker.header` configuration key.
+
+`logtracker.tracker.header = "correlation-id"`
+
+If 
+- The `logtracker.tracker.header` key is not present in the `application.conf` or 
+- Specified header name to the `logtracker.tracker.header` is not available in the HTTP request or 
+- Any value does not contain in the specified header
+
+then a random log tracker id(UUID) will be used.
+
+#### Step 5 : Extend the LogTrackerCallable
 
 This is an optional step where to facilitate the track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead of them.
 
@@ -143,9 +159,9 @@ public class MyCallableTask extends LogTrackerCallable<String> {
     }
 }
 ```
-Thia is an abstract class and you need to place your logic in the `doCall()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
+This is an abstract class and you need to place your logic in the `doCall()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
 
-####Step 6 : Extend the LogTrackerRunnable
+#### Step 6 : Extend the LogTrackerRunnable
 
 This is another an optional step where to facilitate the track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead of them.
 
@@ -158,10 +174,10 @@ public class MyRunnableTask extends LogTrackerRunnable {
     }
 }
 ```
-Thia is an abstract class and you need to place your logic in the `doRun()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
+This is an abstract class and you need to place your logic in the `doRun()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
 
 
-####Step 7 : Use the tracker id
+#### Step 7 : Use the tracker id
 
 When you want to use the tracker id for any other thing in your project, you have a way to do that.
 
@@ -179,9 +195,24 @@ public class OtherLoggerTest {
 
 From `LogTrackerUtil.getTrackerId()` static method, you can get the current tracker id.
 
-###Step 8 : Log errors
+### Step 8 : Log patterns
 
-If you want to log error messages and stack traces, add following config entries to your `application.conf` file.
+If you want to include name of class, method to the logs when using this module, you need to use following switches in the patterns of your `logger.xml` file.
+
+For class : `%X{class}`
+
+For method : `%X{method}`
+
+Ex:
+```xml
+<pattern>
+    %date{yyyy-MM-dd HH:mm:ss.SSS ZZZZ} - [%thread] [%level] - from %X{class}.%X{method} %n%message%n%xException%n
+</pattern> 
+```
+
+### Step 9 : Log errors
+
+If you want to log error messages and stack traces which generate by this module for debugging purposes, add following config entries to your `application.conf` file.
 
 _To log error messages_
 
@@ -191,13 +222,17 @@ _To log stack traces_
 
 `logtracker.error.visible.description = true`
 
-**Note:**
+**Note :**
 If above config entries are not added, it's considered that they set to `false`.
+
+<a name="use"/>
 
 How to use
 ----------
 
 A sample Play application integrated with the LogTracker is in the repository which illustrates how to use this.
+
+<a name="contribute"/>
 
 How to contribute
 -----------------

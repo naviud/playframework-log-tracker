@@ -2,4 +2,4 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /test       @com.zone24x7.bi.sampleapp.controllers.TestController.index()
+GET     /test       @com.logtracker.sampleapp.controllers.TestController.index()
