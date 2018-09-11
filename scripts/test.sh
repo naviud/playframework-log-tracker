@@ -1,1 +1,1 @@
-sbt clean
+sbt compile
