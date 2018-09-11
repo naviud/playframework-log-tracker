@@ -1,1 +1,1 @@
-sbt ++$TRAVIS_SCALA_VERSION test
+sbt clean
