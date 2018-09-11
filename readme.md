@@ -75,12 +75,12 @@ Log tracker id is not available at this moment
 
 <a name="config"/>
 
-Configure
-----------
+## Configure
+
 
 There are very easy steps to incorporate this logger to your project.
 
-#### Step 1 : Import the library dependency to your project
+### Step 1 : Import the library dependency to your project
 
 Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the the module to your project.
 
@@ -88,7 +88,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 "com.zone24x7.bi" % "log-tracker" % "0.0.2-SNAPSHOT"
 ```
 
-#### Step 2 : Register the  module
+### Step 2 : Register the  module
 
 To register the module, add following line to the `application.conf` file.
 
@@ -96,7 +96,7 @@ To register the module, add following line to the `application.conf` file.
 play.modules.enabled += "com.logtracker.LogTrackerModule"
 ```
 
-#### Step 3 : Add a logger provider
+### Step 3 : Add a logger provider
 
 This helps to inject the `LogTrackerLogger` instances wherever you want. To create the injector, use `@Provides` annotation in Guice.
 
@@ -111,7 +111,7 @@ This log provider needs to include to a class which extends a Play `AbstractModu
 
 `@LogTracker` annotation comes with this Play module itself and, this needs to use in every where you use the `LogTrackerLogger`.
 
-#### Step 4 : Use the logger injector
+### Step 4 : Use the logger injector
 
 In order to use the `LogTrackerLogger`, add the `@LogTracker` annotation  to the member variable of type `LogTrackerLogger` in your classes.
 
@@ -145,7 +145,7 @@ If
 
 then a random log tracker id(UUID) will be used.
 
-#### Step 5 : Extend the LogTrackerCallable
+### Step 5 : Extend the LogTrackerCallable
 
 This is an optional step where to facilitate the track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead of them.
 
@@ -161,7 +161,7 @@ public class MyCallableTask extends LogTrackerCallable<String> {
 ```
 This is an abstract class and you need to place your logic in the `doCall()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
 
-#### Step 6 : Extend the LogTrackerRunnable
+### Step 6 : Extend the LogTrackerRunnable
 
 This is another an optional step where to facilitate the track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead of them.
 
@@ -177,7 +177,7 @@ public class MyRunnableTask extends LogTrackerRunnable {
 This is an abstract class and you need to place your logic in the `doRun()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
 
 
-#### Step 7 : Use the tracker id
+### Step 7 : Use the tracker id
 
 When you want to use the tracker id for any other thing in your project, you have a way to do that.
 
@@ -227,15 +227,13 @@ If above config entries are not added, it's considered that they set to `false`.
 
 <a name="use"/>
 
-How to use
-----------
+## How to use
 
 A sample Play application integrated with the LogTracker is in the repository which illustrates how to use this.
 
 <a name="contribute"/>
 
-How to contribute
------------------
+## How to contribute
 
 To contribute to this project, first setup the project in your local environment.
 
