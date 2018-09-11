@@ -2,7 +2,7 @@
 //Begin region : commonSettings
 
 lazy val commonSettings = Seq(
-  organization := "com.zone24x7.bi",
+  organization := "com.logtracker",
   scalaVersion := "2.12.6",
   crossPaths := false,
   doc in Compile := target.map(_ / "none").value
