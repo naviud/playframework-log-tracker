@@ -85,7 +85,7 @@ There are very easy steps to incorporate this logger to your project.
 Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the the module to your project.
 
 ```Scala
-"com.zone24x7.bi" % "log-tracker" % "0.0.2-SNAPSHOT"
+"io.github.naviud" % "log-tracker" % "0.0.2-SNAPSHOT"
 ```
 
 ### Step 2 : Register the  module
@@ -93,7 +93,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 To register the module, add following line to the `application.conf` file.
 
 ```Java
-play.modules.enabled += "com.logtracker.LogTrackerModule"
+play.modules.enabled += "io.github.naviud.logtracker.LogTrackerModule"
 ```
 
 ### Step 3 : Add a logger provider

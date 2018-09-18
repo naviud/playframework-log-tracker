@@ -24,15 +24,12 @@ SOFTWARE.
 
 package io.github.naviud.logtracker.actions;
 
-import com.typesafe.config.Config;
-import org.apache.commons.lang3.StringUtils;
+import io.github.naviud.logtracker.actions.trackerproviders.TrackerIdFetcher;
 import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
-
-import static java.util.UUID.randomUUID;
 
 /**
  * Play action to enable log tracker
@@ -40,14 +37,11 @@ import static java.util.UUID.randomUUID;
  */
 public class LogTrackerAction extends play.mvc.Action.Simple {
 
-    private Config config;
-
-    private static final String LOGTRACKER_TRACKER_PROVIDER_HEADER = "logtracker.tracker.header";
-
+    private TrackerIdFetcher trackerIdFetcher;
 
     @Inject
-    public LogTrackerAction(Config config) {
-        this.config = config;
+    public LogTrackerAction(TrackerIdFetcher trackerIdFetcher) {
+        this.trackerIdFetcher = trackerIdFetcher;
     }
 
     /**
@@ -58,13 +52,7 @@ public class LogTrackerAction extends play.mvc.Action.Simple {
      */
     @Override
     public CompletionStage<Result> call(Http.Context ctx) {
-        String trackerId;
-        if (config.hasPath(LOGTRACKER_TRACKER_PROVIDER_HEADER)) {
-            String header =  config.getString(LOGTRACKER_TRACKER_PROVIDER_HEADER);
-            trackerId = ctx.request().getHeaders().get(header).filter(StringUtils::isNotEmpty).orElse(randomUUID().toString());
-        } else {
-            trackerId = randomUUID().toString();
-        }
+        String trackerId = trackerIdFetcher.get(ctx);
         Http.Context.current().args.put("TrackerId", trackerId);
         return delegate.call(ctx);
     }

@@ -36,7 +36,7 @@ public class LogTrackerUtil {
     private static ThreadLocal<Http.Context> context = new ThreadLocal<>();
 
     /**
-     * Method to get the log tracker id
+     * Method to fetch the log tracker id
      *
      * @return Log tracker id
      * @throws LogTrackerException if error occurs when getting the tracker id
@@ -48,7 +48,6 @@ public class LogTrackerUtil {
         } catch (RuntimeException e) {
             ctx = LogTrackerUtil.context.get();
         }
-
         try {
             return ctx.args.get("TrackerId").toString();
         } catch (Exception e) {

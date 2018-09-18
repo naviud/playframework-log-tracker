@@ -7,4 +7,4 @@ cache:
   - $HOME/.ivy2/cache
   - $HOME/.sbt
 script:
-- scripts/test.sh
+- scripts/build.sh

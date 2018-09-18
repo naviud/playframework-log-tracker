@@ -20,6 +20,8 @@ lazy val module = (project in file("module"))
       "ch.qos.logback" % "logback-classic" % "1.2.3",
       "com.typesafe.play" %% "play" % "2.6.12",
       "junit" % "junit" % "4.12" % Test,
+      "org.mockito" % "mockito-all" % "1.10.19",
+      "org.powermock" % "powermock-mockito-release-full" % "1.6.4",
       guice
     )
   )

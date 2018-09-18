@@ -24,11 +24,19 @@ SOFTWARE.
 
 package io.github.naviud.logtracker;
 
+import com.google.inject.Provides;
+import com.google.inject.Singleton;
+import io.github.naviud.logtracker.actions.trackerproviders.HeaderBasedTrackerIdFetcher;
+import io.github.naviud.logtracker.actions.trackerproviders.TrackerIdFetcher;
+import io.github.naviud.logtracker.actions.trackerproviders.TrackerIdProvider;
+import io.github.naviud.logtracker.actions.trackerproviders.UuidBasedTrackerIdFetcher;
 import play.api.Configuration;
 import play.api.Environment;
 import play.api.inject.Binding;
 import play.api.inject.Module;
 import scala.collection.Seq;
+
+import javax.inject.Named;
 
 /**
  * Class to represent LogTracker module
@@ -45,10 +53,11 @@ public class LogTrackerModule extends Module {
      */
     @Override
     public Seq<Binding<?>> bindings(Environment environment, Configuration configuration) {
-        //PatternLayout.defaultConverterMap.put("CLASS", CustomClassOfCallerConverter.class.getName());
-//        MDC.put("first", "Richard");
         return seq(
-                bind(LogTrackerLogger.class).to(LogTrackerLoggerImpl.class)
+                bind(LogTrackerLogger.class).to(LogTrackerLoggerImpl.class),
+                bind(TrackerIdFetcher.class).qualifiedWith("UUIDBasedTrackerIdProvider").to(UuidBasedTrackerIdFetcher.class),
+                bind(TrackerIdFetcher.class).qualifiedWith("HeaderBasedTrackerIdFetcher").to(HeaderBasedTrackerIdFetcher.class),
+                bind(TrackerIdFetcher.class).toProvider(TrackerIdProvider.class)
         );
     }
 }
