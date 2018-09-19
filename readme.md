@@ -114,7 +114,7 @@ This log provider needs to include to a class which extends a Play `AbstractModu
 
 `@LogTracker` annotation comes with this Play module itself and, this needs to use in every where you use the `LogTrackerLogger`.
 
-&#x1F534; ### Step 4 : Use the logger injector
+### &#x1F534; Step 4 : Use the logger injector
 
 In order to use the `LogTrackerLogger`, add the `@LogTracker` annotation  to the member variable of type `LogTrackerLogger` in your classes.
 
