@@ -13,9 +13,9 @@ Table of Content
 
 ## &#x1F680; Introduction
 
-When analyzing application and access logs in your application via a log monitoring tool like Splunk, there can be a need to cluster log messages which generated for a particular request. Since all the logs are appended together in a way that cannot be clustered, it would be difficult when getting logs which are part of a particular request.  
+When analyzing application and access logs in your application via a log monitoring tool like Splunk, there can be a need to cluster log messages which are generated for a particular request. Since all the logs are appended together in a way that cannot be clustered, it would be difficult when getting logs which are part of a particular request.  
 
-This LogTracker logger module will help to resolve such problem which can happen in your Play project.
+This LogTracker logger module will help to resolve such problems which can happen in your Play project.
 
 ```
 2018-09-19 11:36:23.337 +0530 - [application-akka.actor.default-dispatcher-2] [TRACE] - from com.xyz.bi.das.controllers.actions.V2PropensityParameterValidatorAction.call 
@@ -55,7 +55,7 @@ There are very easy steps to incorporate this logger to your project.
 
 ### &#x1F534; Step 1 : Import the library dependency to your project
 
-Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the the module to your project.
+Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the module to your project.
 
 ```Scala
 "io.github.naviud" % "log-tracker" % "0.0.2-SNAPSHOT"
@@ -80,9 +80,9 @@ LogTrackerLogger provideLogger(LogTrackerLogger logTrackerLogger) {
     return logTrackerLogger;
 }
 ```
-This log provider needs to include to a class which extends a Play `AbstractModule` and should be bound to the `GuiceApplicationLoader`.
+This log provider needs to be included to a class which extends a Play `AbstractModule` and should be bound to the `GuiceApplicationLoader`.
 
-`@LogTracker` annotation comes with this Play module itself and, this needs to use in every where you use the `LogTrackerLogger`.
+`@LogTracker` annotation comes with this Play module itself and, this needs to be included anywhere `LogTrackerLogger` is being used.
 
 ### &#x1F534; Step 4 : Use the logger injector
 
@@ -107,14 +107,14 @@ public class TestController extends Controller {
 To initiate to track your logs, it's necessary to decorate your controller methods with `LogTrackerAction` Play action. This initiates the random log tracker id(UUID) and propagates throughout HTTP context.  
 
 &#x1F4D3;
-If you want to use a tracker id which passed to your microservice as a HTTP header, you can just use it in your log messages. For that, what you need to do is just specify the header name which contains the tracker id to the `logtracker.tracker.header` configuration key.
+If you want to use a tracker id which is passed to your microservice as a HTTP header, you can just use it in your log messages. For that, what you need to do is just specify the header name which contains the tracker id to the `logtracker.tracker.header` configuration key.
 
 `logtracker.tracker.header = "correlation-id"`
 
 If 
 - The `logtracker.tracker.header` key is not present in the `application.conf` or 
 - Specified header name to the `logtracker.tracker.header` is not available in the HTTP request or 
-- Any value does not contain in the specified header
+- Any value not present in the specified header
 
 then a random log tracker id(UUID) will be used.
 
@@ -122,7 +122,7 @@ then a random log tracker id(UUID) will be used.
 
 ### &#x1F535; Extend the LogTrackerCallable
 
-This facilitates to track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead of them.
+This facilitates to track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead.
 
 ```Java
 public class MyCallableTask extends LogTrackerCallable<String> {
@@ -134,11 +134,11 @@ public class MyCallableTask extends LogTrackerCallable<String> {
     }
 }
 ```
-This is an abstract class and you need to place your logic in the `doCall()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
+This is an abstract class and you need to place your logic in the `doCall()` method. Its' return type depends on the type which is declared in the `LogTrackerEnabledTask`.
 
 ### &#x1F535; Extend the LogTrackerRunnable
 
-This facilitates to track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead of them.
+This facilitates to track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead.
 
 ```Java
 public class MyRunnableTask extends LogTrackerRunnable {
@@ -149,14 +149,14 @@ public class MyRunnableTask extends LogTrackerRunnable {
     }
 }
 ```
-This is an abstract class and you need to place your logic in the `doRun()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
+This is an abstract class and you need to place your logic in the `doRun()` method. Its' return type depends on the type which is declared in the `LogTrackerEnabledTask`.
 
 
 ### &#x1F535; Use the tracker id
 
-When you want to use the tracker id for any other thing in your project, you have a way to do that.
+It's also possible to use the tracker id for any other use case in your project.
 
-Ex: If you want to you the tracker id in any other logger in order to link all the logs together, following might be useful.
+Ex: If you want to you the tracker id in any other logger in order to link all the logs together, the following might be useful.
 
 ```Java
 public class OtherLoggerTest {
@@ -186,11 +186,11 @@ Ex:
 ```
 
 &#x1F4D3;
-If you already use `%class`, `%method` switches in your `logger.xml` file, no longer they will work, instead of that, modify them to the above mentioned switches.
+If you already use `%class`, `%method` switches in your `logger.xml` file, they no longer will work, instead modify them to the above mentioned switches.
 
 ### &#x1F535; Log errors
 
-If you want to log error messages and stack traces which generate by this module for debugging purposes, add following config entries to your `application.conf` file.
+If you want to log error messages and stack traces which are generated by this module for debugging purposes, add the following config entries to your `application.conf` file.
 
 _To log error messages_
 
@@ -201,13 +201,13 @@ _To log stack traces_
 `logtracker.error.visible.description = true`
 
 &#x1F4D3;
-If above config entries are not added, it's considered that they set to `false`.
+If above config entries are not added, it's set to `false` by default.
 
 <a name="use"/>
 
 ## &#x1F680; How to use
 
-A sample Play application integrated with the LogTracker is in the repository which illustrates how to use this.
+A sample Play application has been integrated with the LogTracker is in the repository which illustrates how to use this.
 
 <a name="contribute"/>
 
