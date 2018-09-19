@@ -1,22 +1,19 @@
 READ ME
 ======
-LogTracker is a logger module done for Play framework which prepends a unique UUID(tracker id) for the log messages that are generated for a particular request. Tracker id will be selected randomly when a request is initiated.
+LogTracker is a logger module done for Play framework which prepends a unique UUID(tracker id) for the log messages that are generated for a particular request. Tracker id can be passed from a HTTP header or will be selected randomly when a request is initiated.
 
 Table of Content
 ----------------
-&#x1F680;[Introduction](#intro)
-
-&#x1F680;[Configure](#config)
-
-&#x1F680;[How to use](#use)
-
-&#x1F680;[How to contribute](#contribute)
+* [Introduction](#intro)
+* [Configure](#config)
+* [How to use](#use)
+* [How to contribute](#contribute)
 
 <a name="intro"/>
 
 ## &#x1F680; Introduction
 
-When analyzing application and access logs in your application, there can be a need to see the log message flow. Since all the logs are appended together, thus it would be difficult select logs which are part of a particular request.  
+When analyzing application and access logs in your application via a log monitoring tool like Splunk, there can be a need to cluster log messages which generated for a particular request. Since all the logs are appended together in a way that cannot be clustered, it would be difficult when getting logs which are part of a particular request.  
 
 This LogTracker logger module will help to resolve such problem which can happen in your Play project.
 
