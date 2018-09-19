@@ -145,7 +145,9 @@ If
 
 then a random log tracker id(UUID) will be used.
 
-### Step 5 : Extend the LogTrackerCallable
+## Optional Steps
+
+### Extend the LogTrackerCallable
 
 This is an optional step where to facilitate the track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead of them.
 
@@ -161,7 +163,7 @@ public class MyCallableTask extends LogTrackerCallable<String> {
 ```
 This is an abstract class and you need to place your logic in the `doCall()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
 
-### Step 6 : Extend the LogTrackerRunnable
+### Extend the LogTrackerRunnable
 
 This is another an optional step where to facilitate the track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead of them.
 
@@ -177,7 +179,7 @@ public class MyRunnableTask extends LogTrackerRunnable {
 This is an abstract class and you need to place your logic in the `doRun()` method. Its' return type will depends on the type which declares in the `LogTrackerEnabledTask`.
 
 
-### Step 7 : Use the tracker id
+### Use the tracker id
 
 When you want to use the tracker id for any other thing in your project, you have a way to do that.
 
@@ -195,7 +197,7 @@ public class OtherLoggerTest {
 
 From `LogTrackerUtil.getTrackerId()` static method, you can get the current tracker id.
 
-### Step 8 : Log patterns
+### Log patterns
 
 If you want to include name of class, method to the logs when using this module, you need to use following switches in the patterns of your `logger.xml` file.
 
@@ -210,7 +212,7 @@ Ex:
 </pattern> 
 ```
 
-### Step 9 : Log errors
+### Log errors
 
 If you want to log error messages and stack traces which generate by this module for debugging purposes, add following config entries to your `application.conf` file.
 
