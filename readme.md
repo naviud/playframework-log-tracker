@@ -80,6 +80,7 @@ Log tracker id is not available at this moment
 
 There are very easy steps to incorporate this logger to your project.
 
+&#x1F534;
 ### Step 1 : Import the library dependency to your project
 
 Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the the module to your project.
@@ -88,6 +89,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 "io.github.naviud" % "log-tracker" % "0.0.2-SNAPSHOT"
 ```
 
+&#x1F534;
 ### Step 2 : Register the  module
 
 To register the module, add following line to the `application.conf` file.
@@ -96,6 +98,7 @@ To register the module, add following line to the `application.conf` file.
 play.modules.enabled += "io.github.naviud.logtracker.LogTrackerModule"
 ```
 
+&#x1F534;
 ### Step 3 : Add a logger provider
 
 This helps to inject the `LogTrackerLogger` instances wherever you want. To create the injector, use `@Provides` annotation in Guice.
@@ -111,6 +114,7 @@ This log provider needs to include to a class which extends a Play `AbstractModu
 
 `@LogTracker` annotation comes with this Play module itself and, this needs to use in every where you use the `LogTrackerLogger`.
 
+&#x1F534;
 ### Step 4 : Use the logger injector
 
 In order to use the `LogTrackerLogger`, add the `@LogTracker` annotation  to the member variable of type `LogTrackerLogger` in your classes.
@@ -244,5 +248,3 @@ A sample Play application integrated with the LogTracker is in the repository wh
 To contribute to this project, first setup the project in your local environment.
 
 Submit issues, pull requests or contributions would be appreciated.
-
-&#x1F534;
