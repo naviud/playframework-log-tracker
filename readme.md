@@ -149,7 +149,7 @@ then a random log tracker id(UUID) will be used.
 
 ### Extend the LogTrackerCallable
 
-This is an optional step where to facilitate the track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead of them.
+This facilitates to track logs when `Callable` tasks are being used to offload tasks. If `Callable` tasks are in use in your code, you need to use `LogTrackerCallable` instead of them.
 
 ```Java
 public class MyCallableTask extends LogTrackerCallable<String> {
@@ -165,7 +165,7 @@ This is an abstract class and you need to place your logic in the `doCall()` met
 
 ### Extend the LogTrackerRunnable
 
-This is another an optional step where to facilitate the track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead of them.
+This facilitates to track logs when `Runnable` tasks are being used to offload tasks. If `Runnable` tasks are in use in your code, you need to use `LogTrackerRunnable` instead of them.
 
 ```Java
 public class MyRunnableTask extends LogTrackerRunnable {
@@ -212,6 +212,10 @@ Ex:
 </pattern> 
 ```
 
+**Note :**
+
+If you already use `%class`, `%method` switches in your `logger.xml` file, no longer they will work, instead of that, modify them to the above mentioned switches.
+
 ### Log errors
 
 If you want to log error messages and stack traces which generate by this module for debugging purposes, add following config entries to your `application.conf` file.
@@ -240,3 +244,5 @@ A sample Play application integrated with the LogTracker is in the repository wh
 To contribute to this project, first setup the project in your local environment.
 
 Submit issues, pull requests or contributions would be appreciated.
+
+&#x1F534;
