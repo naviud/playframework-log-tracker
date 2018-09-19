@@ -4,14 +4,17 @@ LogTracker is a logger module done for Play framework which prepends a unique UU
 
 Table of Content
 ----------------
-* [Introduction](#intro)
-* [Configure](#config)
-* [How to use](#use)
-* [How to contribute](#contribute)
+&#x1F680;[Introduction](#intro)
+
+&#x1F680;[Configure](#config)
+
+&#x1F680;[How to use](#use)
+
+&#x1F680;[How to contribute](#contribute)
 
 <a name="intro"/>
 
-## Introduction
+## &#x1F680; Introduction
 
 When analyzing application and access logs in your application, there can be a need to see the log message flow. Since all the logs are appended together, thus it would be difficult select logs which are part of a particular request.  
 
@@ -75,7 +78,7 @@ Log tracker id is not available at this moment
 
 <a name="config"/>
 
-## Configure
+## &#x1F680; Configure
 
 
 There are very easy steps to incorporate this logger to your project.
@@ -133,7 +136,7 @@ public class TestController extends Controller {
 
 To initiate to track your logs, it's necessary to decorate your controller methods with `LogTrackerAction` Play action. This initiates the random log tracker id(UUID) and propagates throughout HTTP context.  
 
-** &#x1F4D3; Note :**
+&#x1F4D3;
 If you want to use a tracker id which passed to your microservice as a HTTP header, you can just use it in your log messages. For that, what you need to do is just specify the header name which contains the tracker id to the `logtracker.tracker.header` configuration key.
 
 `logtracker.tracker.header = "correlation-id"`
@@ -212,8 +215,7 @@ Ex:
 </pattern> 
 ```
 
-** &#x1F4D3; Note :**
-
+&#x1F4D3;
 If you already use `%class`, `%method` switches in your `logger.xml` file, no longer they will work, instead of that, modify them to the above mentioned switches.
 
 ### &#x1F535; Log errors
@@ -228,18 +230,18 @@ _To log stack traces_
 
 `logtracker.error.visible.description = true`
 
-** &#x1F4D3; Note :**
+&#x1F4D3;
 If above config entries are not added, it's considered that they set to `false`.
 
 <a name="use"/>
 
-## How to use
+## &#x1F680; How to use
 
 A sample Play application integrated with the LogTracker is in the repository which illustrates how to use this.
 
 <a name="contribute"/>
 
-## How to contribute
+## &#x1F680; How to contribute
 
 To contribute to this project, first setup the project in your local environment.
 
