@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eigengo/sbt-raml-plugin.png?branch=master)](https://travis-ci.com/naviud/playframework-log-tracker)
+
 READ ME
 ======
 LogTracker is a logger module done for Play framework which prepends a unique UUID(tracker id) for the log messages that are generated for a particular request. Tracker id can be passed from a HTTP header or will be selected randomly when a request is initiated.
