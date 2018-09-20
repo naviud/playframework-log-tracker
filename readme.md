@@ -7,7 +7,7 @@
 </a>
 </p>
    
-> LogTracker is a logger module done for Play framework which prepends a unique UUID(tracker id) for the log messages that are generated for a particular request. Tracker id can be passed from a HTTP header or will be selected randomly when a request is initiated.
+> LogTracker is a logger module done for Play framework which prepends a unique tracker id for the log messages that are generated for a particular request. Tracker id can be passed from a HTTP header or will be selected randomly when a request is initiated.
 
 Table of Content
 ----------------
