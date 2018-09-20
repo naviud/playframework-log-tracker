@@ -1,4 +1,11 @@
-[![Build Status](https://travis-ci.org/eigengo/sbt-raml-plugin.png?branch=master)](https://travis-ci.com/naviud/playframework-log-tracker)
+<p align="center">
+<a href="https://travis-ci.org/naviud/playframework-log-tracker">
+    <img src="https://api.travis-ci.org/eigengo/sbt-raml-plugin.png?branch=master" alt="travis build" height="18">
+</a>
+<a href="https://github.com/yohangz/ornamentum/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="license" height="18">
+</a>
+</p>
 
 READ ME
 ======
