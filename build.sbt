@@ -39,7 +39,12 @@ lazy val commonSettings = Seq(
       password)
     ).getOrElse(credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credential")),
     pgpPublicRing := file("./travis/local.pubring.asc"),
-    pgpSecretRing := file("./travis/local.secring.asc")
+    pgpSecretRing := file("./travis/local.secring.asc"),
+  (for {
+    pgpPass <- Option(System.getenv().get("PGP_PASS"))
+  } yield
+    pgpPassphrase := Some(pgpPass.toCharArray)
+    ).getOrElse(pgpPassphrase := Some(null))
 )
 
 
