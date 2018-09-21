@@ -18,7 +18,7 @@ dd:
   -in travis/secrets.tar.enc -out travis/local.secrets.tar -d
 before_install:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
-  openssl aes-256-cbc -K $encrypted_fdab029c091d_key -iv $encrypted_fdab029c091d_iv
+  openssl aes-256-cbc -K 7787145ba6d4cd1885699d93a230381db1e165c13bb70a5e0d97095d31cc8cc3 -iv 29f3cc9d47baed63e23ad072e7f8c0f1
   -in travis/secrets.tar.enc -out travis/local.secrets.tar -d;
   tar xv -C travis -f travis/secrets.tar;
   fi
