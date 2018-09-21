@@ -7,7 +7,7 @@ cache:
   - "$HOME/.ivy2/cache"
   - "$HOME/.sbt"
 script:
-- scripts/build.sh
+- sbt clean compile package
 env:
   global:
   - secure: MTwmzpS9B8+oGHutRbNIDIFG8DpaJ3w8U/acHGKoOh6Q6UvNEPJMD5d6u96VNJsnidnFt/ppvnPE6FuHHqGf/T9mQYnxTCUgxQqacXIGsWche25vGSZohjdw0Qszs540smnT2bawXXhIDX4AZjy9Vx7Kgm1La+7H2nh8WRsQqglcZV9DMH3z7/4QBOPPMziFvufVVj/D02Wa5fWRWnWv09ipGfzmPrLZC0Mn4j7QgfVPX0x923myqcHS1toO8u3bjuiaQ2V3H8w6UsjUWs30lsMLpxaWva3F4Qv3AXizzWZYXjy4M91ExoqeM6u6jBlojtlYAAbP06xz1i6gXNavoLL6Hrhv3MeGI4wrcRsmJ9mjALcuGlKz54N43JlxGX2rgRsmRG7s9O5uugUFkxTFpJd8S7hJu7itVj5zUOUdJFzDmPvePC+tlCrouTfjALeJfvAxVU9WxZJPZjyYhcAFuOYfPJMQu+Q+QDe9SK3BJFPoEfpf3zosghq+NRYhN5AtYODy4hLZoHQajwXNh6rSdQ23iV1ati01C+itMz/4Q+WjKQCsVf0dMHf1T6RSQ3UiYBWPPGDdGWLEq58ugOgpVSP3+KEbtBDoahF67t8sdyJzfSNyIbi1vY7AOUN1oQHAeK70DjsNbdybhYh3OTWY/+54EwZiDq9qXjNU6hN4Eu8=
