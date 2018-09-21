@@ -1,8 +1,8 @@
 <p align="center">
 <a href="https://travis-ci.org/naviud/playframework-log-tracker">
-    <img src="https://api.travis-ci.com/naviud/playframework-log-tracker.svg?branch=master" alt="travis build" height="18">
+    <img src="https://api.travis-ci.org/naviud/playframework-log-tracker.svg?branch=master" alt="travis build" height="18">
 </a>
-<a href="https://github.com/yohangz/ornamentum/blob/master/LICENSE">
+<a href="https://github.com/naviud/playframework-log-tracker/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="license" height="18">
 </a>
 </p>
