@@ -37,7 +37,9 @@ lazy val commonSettings = Seq(
       "oss.sonatype.org",
       username,
       password)
-    ).getOrElse(credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credential"))
+    ).getOrElse(credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credential")),
+    pgpPublicRing := file("./travis/local.pubring.asc"),
+    pgpSecretRing := file("./travis/local.secring.asc")
 )
 
 
