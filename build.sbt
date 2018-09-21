@@ -107,4 +107,4 @@ lazy val root = (project in file("."))
   .aggregate(module, sample)
 
 //End region : root project
-enablePlugins(GitVersioning)
+//enablePlugins(GitVersioning)
