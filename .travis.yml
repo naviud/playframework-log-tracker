@@ -14,9 +14,12 @@ env:
   - secure: VFWL3Mc+83dF9lCJxWcF5+uLn16PuxMOiUj1Ep+a+aMPJuYKldYrlgME73RTWZekE20J6O8QhFUv0DElc9W8aC49onUXO83xUMzv5uWgFLc0AUx/XJTQIvSIT/IbY5RkW7Ir8uJSTRcQroAphxqpJkxnTlawRg26/tY595/oN9YLnz9kmjWnyJ87L5PFwCJ9wzgxN5xw+lZAFgqJbfwC+/vF8GzrFfkVnJc2G8fNAjx5QexF0JVEwKjP50fv4o8o9OV8AHeTDDF4gMngH9CIggEwJDEDOEvcoXRz0Rl7IecQUt9LCf1oKmRPx+Ar9mfE0AFSv39IXnpjJvZJc+fn7idkHqNKzIewZ4ctk4dA3/bk+CDK+J+dsn7eP+RBWPjxSOazFlpXFjC09e+1L7Iv0qGd1Jz8Mg3ytRlOGxtjYEzSnjoXqBq968o17jUhUXDTBsan1c9s1JE9Oet0LMf14W+0yc/G9jqqeY/EF1dV40V3WcGAfrEn4sD3NaO9W4Au051Tkg7+qTkNlGXzOM9OuHah/D3vGJfQtLyEQB/eVd/A/sXEEj8u5Ob4mOllBCqZbbsEd0Wo9pi0CP0bhwq0+ZmD0yr5Xj/4ettqwprwapFgkDwvDirLwS1bmOe3t7WkYI8oveDvpmGK8AwJk9+YVNJ/lMWqyuOWrY0q6l9FwWQ=
   - secure: MLQKypqhWf3bzHB95j9Q8WnPmU8PsZ+BCcVdnBPwy9fb0JdhUCPix197NkYGZCD2VGoX4fc2kZAQBQn6BPnPsqXqKw06tAcbWM/pfk89vTSZ/btOn2tYdRVOTp0SYLAlhPelE5nPNMEi+cC24KXuatgC8nhgzt/lyj/HcpyXJhLsqX6Em9QHayLhk8lACktihTnALVeApcNEt1xRZvwM9zTar/L/9mdCKw2q6Otw9dimklPi9eTMj1WcvrAuTVZW4ZFUwdrnS/E6NBwvvIeIeX0Voduor3VSls5ziBjJCcnWt8LkWuy5uCtYmKnQITbUurb8ceH+T1oHR6orYmOM5KJL68z7MN5I6QU/ip58dmDIcD0nI5+VDw83YLdQ+4da80iFquPk+5QowDNmOfN1i1evecUjJHGKvfTBpHLRD7Jyqcwcx5PC8UV1aejVElGx6O1G/IP3WvGl6PzYDUFjkcKcpntQ9D5amHaduNXXQ8QsH7gRPydK8uVB0Wd8jwkxIVFoTdMiHZ+aviW6pYXcXQFgVCL7N6otGlLTNBLBg95fRDS/mNMuJqU6EZLJG3xA9+97f1TD8BNLCFPCRtNqAJS9ZDAkBPPZ2YC/IWlmnYvs2+MdYuR5YkqwvjPub8uuFATvfqBYsRs4NTUBc2Vbq663xzJD1MNR2ho7OGoVJik=
 before_install:
-- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then openssl aes-256-cbc -K 8c509101ffd8c62d9e6a968a8b6d0515647fbc09cc1f337d1f9a21705988a086 -iv 23bc943da758dbf7ced466640b1ee728 -in travis/secrets.tar.enc -out travis/secrets.tar-d;
-  tar xv -C travis -f travis/secrets.tar;
-  fi
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then openssl aes-256-cbc -K 8c509101ffd8c62d9e6a968a8b6d0515647fbc09cc1f337d1f9a21705988a086
+  -iv 23bc943da758dbf7ced466640b1ee728 -in travis/secrets.tar.enc -out travis/secrets.tar-d;
+  tar xv -C travis -f travis/secrets.tar; fi
 after_success:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION releaseEarly;
   fi
+dd:
+- openssl aes-256-cbc -K $encrypted_fdab029c091d_key -iv $encrypted_fdab029c091d_iv
+  -in travis/secrets.tar.enc -out travis/local.secrets.tar -d
