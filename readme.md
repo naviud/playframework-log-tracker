@@ -65,8 +65,11 @@ There are very easy steps to incorporate this logger to your project.
 Add the following dependency resolver to the `libraryDependencies` sequence in your `build.sbt` file to import the module to your project.
 
 ```Scala
-"io.github.naviud" % "log-tracker" % "0.0.2-SNAPSHOT"
+"io.github.naviud" % "log-tracker" % "<VERSION>"
 ```
+
+&#x1F4D3;
+Current stable version is `0.0.4`
 
 ### &#x1F488; Step 2 : Register the  module
 
