@@ -40,8 +40,8 @@ public abstract class LogTrackerRunnable implements Runnable {
     public LogTrackerRunnable() {
         try {
             this.context = Http.Context.current();
-        } catch (Exception e) {
-
+        } catch (RuntimeException e) {
+            this.context = null;
         }
     }
 

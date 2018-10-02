@@ -48,7 +48,7 @@ public abstract class LogTrackerCallable<T> implements Callable<T> {
         try {
             this.context = Http.Context.current();
         } catch (Exception e) {
-
+            this.context = null;
         }
     }
 
