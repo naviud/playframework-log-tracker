@@ -33,7 +33,7 @@ public class HeaderBasedTrackerIdFetcher extends TrackerIdFetcher {
         if
         (
                 config.hasPath(LOGTRACKER_TRACKER_PROVIDER_HEADER) &&
-                ctx.request().getHeaders().get(LOGTRACKER_TRACKER_PROVIDER_HEADER).isPresent()
+                ctx.request().getHeaders().get(config.getString(LOGTRACKER_TRACKER_PROVIDER_HEADER)).isPresent()
         ) {
             return ctx.request()
                     .getHeaders()
