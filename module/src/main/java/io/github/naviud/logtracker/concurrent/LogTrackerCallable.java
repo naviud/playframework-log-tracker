@@ -38,14 +38,18 @@ import java.util.concurrent.Callable;
  */
 public abstract class LogTrackerCallable<T> implements Callable<T> {
 
-    protected final Http.Context context;
+    protected Http.Context context;
 
     /**
      * Default constructor
      *
      */
     public LogTrackerCallable() {
-        this.context = Http.Context.current();
+        try {
+            this.context = Http.Context.current();
+        } catch (Exception e) {
+
+        }
     }
 
     /**

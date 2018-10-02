@@ -31,14 +31,18 @@ import play.mvc.Http;
 
 public abstract class LogTrackerRunnable implements Runnable {
 
-    protected final Http.Context context;
+    protected Http.Context context;
 
     /**
      * Default constructor
      *
      */
     public LogTrackerRunnable() {
-        this.context = Http.Context.current();
+        try {
+            this.context = Http.Context.current();
+        } catch (Exception e) {
+
+        }
     }
 
     /**
