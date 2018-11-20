@@ -69,7 +69,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 ```
 
 &#x1F4D3;
-Current stable version is `0.0.7`
+Current stable version is `0.0.9`
 
 ### &#x1F488; Step 2 : Register the  module
 
