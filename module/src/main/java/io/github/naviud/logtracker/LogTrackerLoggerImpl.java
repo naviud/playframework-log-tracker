@@ -47,6 +47,8 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
 
     private String path = "application";
 
+    private Logger.ALogger logger;
+
     /**
      * Default constructor
      *
@@ -54,10 +56,10 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
     @Inject
     public LogTrackerLoggerImpl(Config config) {
         this.config = config;
-        if (config.hasPath(LOGTRACKER_LOGGER_NAME)) {
-            path = config.getString(LOGTRACKER_LOGGER_NAME);
+        if (this.config.hasPath(LOGTRACKER_LOGGER_NAME)) {
+            this.path = config.getString(LOGTRACKER_LOGGER_NAME);
         }
-        new Logger.ALogger(play.api.Logger.apply(path));
+        logger = new Logger.ALogger(play.api.Logger.apply(this.path));
     }
 
     /**
@@ -69,7 +71,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.trace(getMessage(message));
+        logger.trace(getMessage(message));
 
         MDC.clear();
     }
@@ -84,7 +86,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.trace(getMessage(message), error);
+        logger.trace(getMessage(message), error);
 
         MDC.clear();
     }
@@ -98,7 +100,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.trace(getMessage(message));
+        logger.trace(getMessage(message));
 
         MDC.clear();
     }
@@ -113,7 +115,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.debug(getMessage(message), error);
+        logger.debug(getMessage(message), error);
 
         MDC.clear();
     }
@@ -127,7 +129,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.info(getMessage(message));
+        logger.info(getMessage(message));
 
         MDC.clear();
     }
@@ -142,7 +144,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.info(getMessage(message), error);
+        logger.info(getMessage(message), error);
 
         MDC.clear();
     }
@@ -156,7 +158,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.warn(getMessage(message));
+        logger.warn(getMessage(message));
 
         MDC.clear();
     }
@@ -171,7 +173,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.warn(getMessage(message), error);
+        logger.warn(getMessage(message), error);
 
         MDC.clear();
     }
@@ -186,7 +188,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.error(getMessage(message), error);
+        logger.error(getMessage(message), error);
 
         MDC.clear();
     }
@@ -200,7 +202,7 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
         MDC.put("class", Thread.currentThread().getStackTrace()[2].getClassName());
         MDC.put("method", Thread.currentThread().getStackTrace()[2].getMethodName());
 
-        Logger.error(getMessage(message));
+        logger.error(getMessage(message));
 
         MDC.clear();
     }
@@ -217,10 +219,10 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
             msg = LogTrackerUtil.getTrackerId() + " : " + message;
         } catch (LogTrackerException e) {
             if (config.hasPath(LOGTRACKER_ERROR_VISIBLE_MESSAGE) && config.getBoolean(LOGTRACKER_ERROR_VISIBLE_MESSAGE)) {
-                Logger.info("Log tracker id is not available at this moment");
+                logger.info("Log tracker id is not available at this moment");
             }
             if (config.hasPath(LOGTRACKER_ERROR_VISIBLE_DESC) && config.getBoolean(LOGTRACKER_ERROR_VISIBLE_DESC)) {
-                Logger.trace("Log tracker id is not available at this moment", e);
+                logger.trace("Log tracker id is not available at this moment", e);
             }
             msg = message;
         }

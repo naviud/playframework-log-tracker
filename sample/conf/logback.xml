@@ -50,7 +50,7 @@
     </appender>
 
     <!-- Application log level is set to TRACE -->
-    <logger name="application" level="TRACE" />
+    <logger name="application_das" level="TRACE" />
 
     <!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
     <logger name="com.avaje.ebean.config.PropertyMapLoader" level="OFF" />
