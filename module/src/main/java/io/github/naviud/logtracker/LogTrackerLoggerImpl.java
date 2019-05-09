@@ -43,6 +43,9 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
 
     private static final String LOGTRACKER_ERROR_VISIBLE_MESSAGE = "logtracker.error.visible.message";
     private static final String LOGTRACKER_ERROR_VISIBLE_DESC = "logtracker.error.visible.description";
+    private static final String LOGTRACKER_LOGGER_NAME = "logtracker.tracker.name";
+
+    private String path = "application";
 
     /**
      * Default constructor
@@ -51,7 +54,10 @@ class LogTrackerLoggerImpl implements LogTrackerLogger {
     @Inject
     public LogTrackerLoggerImpl(Config config) {
         this.config = config;
-        new Logger.ALogger(play.api.Logger.apply("application"));
+        if (config.hasPath(LOGTRACKER_LOGGER_NAME)) {
+            path = config.getString(LOGTRACKER_LOGGER_NAME);
+        }
+        new Logger.ALogger(play.api.Logger.apply(path));
     }
 
     /**
