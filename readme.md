@@ -69,7 +69,7 @@ Add the following dependency resolver to the `libraryDependencies` sequence in y
 ```
 
 &#x1F4D3;
-Current stable version is `1.0.0`
+Current stable version is `1.1.0`
 
 ### &#x1F488; Step 2 : Register the  module
 
@@ -214,6 +214,16 @@ _To log stack traces_
 If above config entries are not added, it's set to `false` by default.
 
 <a name="use"/>
+
+### &#x1F390; Set logger name
+
+If you want to set logger name when several logger instances are in your application, use the following config entry to your `application.conf` file.
+
+_To change the logger name_
+
+`logtracker.tracker.name = my_app`
+
+If above config entry is not added, it's set to `application` by default.
 
 ## &#x1F680; How to use
 
